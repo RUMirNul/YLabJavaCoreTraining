@@ -7,10 +7,18 @@ import java.util.Map;
 public class Main {
     public static void main(String[] args) {
         int[] arr = {3, 4, 2, 7};
-        System.out.println(Arrays.toString(searchPairNumbersThatGivesRequiredNumber(arr, 10)));
+        try {
+            int[] resultArray = searchPairNumbersThatGivesRequiredNumber(arr, 10);
+            System.out.println(Arrays.toString(resultArray));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     public static int[] searchPairNumbersThatGivesRequiredNumber(int[] arrayNumbers, int requiredNumber) {
+        if (arrayNumbers == null) throw new IllegalArgumentException("Array is null!");
+        if (arrayNumbers.length < 2) throw new IllegalArgumentException("There are not enough elements in the array!");
+
         Map<Integer, Integer> neededNumberAndHaveNumber = new HashMap<>();
 
         for (int number : arrayNumbers) {
